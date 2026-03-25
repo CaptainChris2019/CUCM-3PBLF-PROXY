@@ -21,3 +21,5 @@ This is still a very much WIP. This is not yet production-ready.
 - Multiplexing (so say more than one phone is monitoring the same directory number, the proxy sends only one SUBSCRIBE request to CUCM and distrubites status updates to each phone) 
 - Maybe making this more than just a proxy, including adding a REST API.
 - Sending 301 to CUCM to endpoints who sent INVITES to the proxy to CUCM (for if your phone needs the speedial dst IP to be the same as the BLF IP.
+- A way to make subscriptions persist after a reboot of the script (such as using SQLite)
+- And more
