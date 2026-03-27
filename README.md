@@ -1,18 +1,20 @@
 # CUCM 3rd Party SIP Device BLF Proxy
-Normally, CUCM refuses to allow 3rd party SIP devices to subscribe to BLFs. This proxy fixes that issue by connecting to CUCM as a SIP trunk and relaying it to the phones using the RFC 3261 standard. Every standard SIP phone should work as long as you can set the BLF to use a separate IP address than the speed-dial. However for now, I have only tested it on a Cisco 7861-3PCC, and only this one phone.
+Normally, CUCM refuses to allow 3rd party SIP devices to subscribe to BLFs. This proxy fixes that issue by connecting to CUCM as a SIP trunk and relaying it to the phones using the RFC 3261 standard. Every standard SIP phone should work as long as you can set the BLF to use a separate IP address than the speed-dial. However, for now, I have only tested it on a Cisco 7861-3PCC, and only this one phone.
 
-This proxy server is written in Python, and was designed to work on a deadicated Debian virtual machine with at least 512MB of RAM that can sit on your ESXi host happily right next to your CUCM. It should also work in Docker or on another OS such as macOS or Windows. Because BLFs are very simple, it does not rely on any external SIP library, everything it needs is in to every Python install. This allows it use very minimal resources. However, I have not yet tested it at an extreme scale.
+This proxy server is written in Python, and was designed to work on a deadicated Debian virtual machine with at least 512MB of RAM that can sit on your ESXi host happily right next to your CUCM. It should also work in Docker or on another OS such as macOS or Windows. Because BLFs are very simple, they do not rely on any external SIP library; everything they need is in every Python install. This allows it use very minimal resources. However, I have not yet tested it at an extreme scale.
 
 All you need to do is change the IP addresses in the file. UPSTREAM_HOST is the IP of the CUCM node, and PROXY_IP is the IP of the machine your running it on. You will need to create a trunk in CUCM with the proxies IP. Make sure its SIP Security and Device profiles allow for presence, and that the SUBSCRIBE Calling Search Space contains every Directory Number you are monitoring with the proxy.
 
 This is still a very much WIP. This is not yet production-ready.
 
 ## Setup BLFs
+The process of setting up BLFs on most phones so they use a separate server for BLFs is very different from just adding a BLF and pointing it to the server.
 ### Polycom
 On a Polycom phone, you will need to register a second line to register to the proxy server and set BLFs to use the second line.
+### MicroSIP
+I have not yet found a way to do this on MicroSIP.
 
 ## Planned Future Expansion
-- Fixing everything including the grammar on this README (hey, dont blame me, im tired)
 - Support for Ringing Status
 - TCP & TLS support
 - Automatic detection of host IP address (if using DHCP/DNS, for some reason)
