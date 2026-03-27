@@ -7,11 +7,11 @@ All you need to do is change the IP addresses in the file. UPSTREAM_HOST is the 
 
 This is still a very much WIP. This is not yet production-ready.
 
-### Setup BLFs
-## Polycom
+## Setup BLFs
+### Polycom
 On a Polycom phone, you will need to register a second line to register to the proxy server and set BLFs to use the second line.
 
-### Planned Future Expansion
+## Planned Future Expansion
 - Fixing everything including the grammar on this README (hey, dont blame me, im tired)
 - Support for Ringing Status
 - TCP & TLS support
