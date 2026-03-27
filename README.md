@@ -11,6 +11,7 @@ This is still a very much WIP. This is not yet production-ready.
 The process of setting up BLFs on most phones so they use a separate server for BLFs is very different from just adding a BLF and pointing it to the server.
 ### Polycom
 On a Polycom phone, you will need to register a second line to register to the proxy server and set BLFs to use the second line.
+### Cisco SPA/3PCC
 ### MicroSIP
 I have not yet found a way to do this on MicroSIP.
 
